@@ -24,7 +24,7 @@ custom:
     includeModules: true
   # Load our secret environment variables based on the current stage.
   # Fallback to default if it is not in prod.
-  environment: ${ssm:/STRIPE_TEST_SECRET~true}
+  environment: ${ssm:/STRIPE_PUBLISHABLE}
 
 provider:
   name: aws
@@ -36,7 +36,7 @@ provider:
   # under process.env.
   environment:
     tableName: ${self:custom.tableName}
-    stripeSecretKey: ${ssm:/STRIPE_TEST_SECRET~true}
+    stripeSecretKey: ${ssm:/STRIPE_PUBLISHABLE}
   
   # 'iamRoleStatement' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
